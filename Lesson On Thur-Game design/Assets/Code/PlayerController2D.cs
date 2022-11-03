@@ -18,4 +18,31 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField]
     private Sprite pictureDown;
 
+    [SerializeField, Header("PictureRenderFunction")]
+    private SpriteRenderer spr;
+
+    private void Update()
+    {
+        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+
+        transform.Translate(speedHorizontal * Time.deltaTime * h, speedVertical * Time.deltaTime * v, 0);
+
+        if (v > 0)
+        {
+            spr.sprite = pictureUp;
+        }
+
+        if (v < 0)
+        {
+            spr.sprite = pictureDown;
+        }
+
+        if(v == 0)
+        {
+            spr.sprite = pictureMiddle;
+        }
+
+    }
+
 }
