@@ -7,7 +7,16 @@ public class EnemyFiringSystem : BulletSystem
 
     private void Awake()
     {
-        //延遲重複
+
+    }
+    private void OnBecameVisible()
+    {
+        //延迟重複執行
         InvokeRepeating("SpawnBullet", 0, interval);
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
